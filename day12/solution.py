@@ -8,17 +8,6 @@ for line in input:
     pattern, broken = line.split(' ')
     pattern = pattern.strip()
     broken = list(map(int, broken.strip().split(',')))
-    minified = []
-    item = [0, pattern[0], 1]
-    i = 1
-    minified.append(item)
-    for char in pattern[1:]:
-        if char != item[1]:
-            item = [i, char, 1]
-            minified.append(item)
-        else:
-            item[2] += 1
-        i += 1
     data.append((pattern, broken))
 
 
