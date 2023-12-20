@@ -93,7 +93,7 @@ print(f'Part One: {part_one()}')
 
 
 def cross_product(vector1, vector2):
-    return vector1[0]*vector2[1] - vector1[1]*vector2[0]
+    return vector1[0] * vector2[1] - vector1[1] * vector2[0]
 
 
 def rotate_vector_90(vector, direction):

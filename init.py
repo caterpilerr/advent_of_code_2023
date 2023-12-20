@@ -1,6 +1,6 @@
 import os
-import sys
 import requests
+import argparse
 
 url_pattern = 'https://adventofcode.com/2023/day/{}/input'
 code_template = '''input_file = 'input.txt'
@@ -18,13 +18,7 @@ def part_two():
 print(f'Part Two: {part_two()}')
 '''
 
-def init():
-    if len(sys.argv) != 3:
-        print("Usage: python init.py <day> <session-token>")
-        return
-    
-    day = sys.argv[1]
-    aoc_session = sys.argv[2]
+def init(day, aoc_session):
     url = url_pattern.format(day)
     response = requests.get(url, cookies={'session': aoc_session})
     if response.status_code != 200:
@@ -40,5 +34,10 @@ def init():
     with open(f'{file_folder}/{solution_file}', 'w') as f:
         f.write(code_template)
 
-if __name__ == '__main__':  
-    init()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Initialize a new day.')
+    parser.add_argument('day', help='The day to initialize.')
+    parser.add_argument('session_token', help='The session token for Advent of Code.')
+    args = parser.parse_args()
+
+    init(args.day, args.session_token)
