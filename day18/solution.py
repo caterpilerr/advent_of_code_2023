@@ -79,7 +79,7 @@ def decode_command(code):
 
 
 def calculate_area(commands, decode=False):
-    current = np.array([0, 0], dtype=np.int64)
+    current = np.array([0.5, 0.5])
     vertices = [current]
     for command in commands:
         if decode:
