@@ -145,16 +145,14 @@ def find_longest_path_in_graph(graphs, start, end):
             return 0
 
         visited.add(node_id)
-        next_paths = []
+        max_path = float('-inf')
         for adj_id, weight in graphs[node_id].adjacent:
             if adj_id in visited:
                 continue
-            next_path = weight + rec(adj_id, visited)
-            next_paths.append(next_path)
-
+            max_path = max(max_path, weight + rec(adj_id, visited))
         visited.remove(node_id)
 
-        return max(next_paths) if next_paths else float('-inf')
+        return max_path
 
     max_path = rec(start, set())
 
